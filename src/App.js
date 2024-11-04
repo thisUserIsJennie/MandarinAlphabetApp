@@ -13,17 +13,17 @@ const PageSelection = { HomePage: "HomePage" };
 const App = () => {
   var userSelectedContent = PageSelection.HomePage;
   const mainContent = MainPage(userSelectedContent);
-  const sidebar = Sidebar();
+  const navBar = NavigationBar();
 
   return (
     <div className="App">
-      {sidebar};
+      {navBar};
       {mainContent};
     </div>
   );
 }
 
-const Sidebar = () => {
+const NavigationBar = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary" data-bs-theme="dark">
       <Container>
