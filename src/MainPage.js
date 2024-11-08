@@ -4,6 +4,9 @@
  * the quiz page, or the writing page, etc.
  */
 
+import { Button } from "react-bootstrap";
+import Zhuyin from "./ZhuyinDictionary";
+
 const MainPage = (selectedContent) => {
   var displayContent;
 
@@ -22,6 +25,11 @@ const MainPage = (selectedContent) => {
 }
 
 const HomePage = () => {
+  // const keyboard = AlphabetKeyboard();
+  var buttonList = [];
+  for (const char in Zhuyin) {
+    buttonList += Zhuyin[char];
+  }
   return (
     <div>
       <div>
@@ -34,11 +42,24 @@ const HomePage = () => {
             is a set of characters designed to help you learn to pronounce Mandarin words.
             Think of it like the English ABC's, except for pronounciation only.</p>
         </div>
-        <div></div>
+        <div>
+          <button>
+            {buttonList[0]}
+          </button>
+          </div>
       </div>
     </div>
   )
 }
+
+// const AlphabetKeyboard = () => {
+//   var buttonList = [];
+//   for (const char in Zhuyin) {
+//     buttonList += Zhuyin[char];
+//   }
+
+//   return (buttonList.map((char) => <button>{char}</button>));
+// }
 
 const UnknownPage = () => {
   return (
