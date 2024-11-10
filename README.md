@@ -10,9 +10,9 @@ Currently, there is only one page in this application, which contains all the Zh
 
 # Demo
 
-![Home Page Introductory Info](AppHome_Demo1.png/Demo.png)
+![Home Page Introductory Info](AppHome_Demo1.png)
 
-![Home Page Zhuyin Keyboard](AppHome_Demo2.png/Demo.png)
+![Home Page Zhuyin Keyboard](AppHome_Demo2.png)
 
 # Technologies Used
 
