@@ -1,5 +1,5 @@
 /**
- * MainPage manages the content of everything except the Navigation Bar at the top of the app.
+ * MainPage.js manages the content of everything except the Navigation Bar at the top of the app.
  * Depending on what tab the user has selected, this may be the home page, 
  * the quiz page, or the writing page, etc.
  */
@@ -9,6 +9,11 @@ import React from "react";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
+/**
+ * Sets the display content depending on which page the user has selected
+ * @param {String} selectedContent "HomePage", "Quiz", etc.
+ * @returns Content to display on page, or an error message if invalid parameter was passed in.
+ */
 const MainPage = (selectedContent) => {
   var displayContent;
 
@@ -26,6 +31,9 @@ const MainPage = (selectedContent) => {
   return displayContent;
 }
 
+/**
+ * Generates Home Page content
+ */
 const homePage = () => {
   return (
     <div>
@@ -37,6 +45,9 @@ const homePage = () => {
   )
 }
 
+/**
+ * Generates the introductory info at the top of the Home Page
+ */
 const homePageIntro = () => {
   return (
     <div id="zhuyinIntro">
@@ -60,6 +71,9 @@ const homePageIntro = () => {
     </div>);
 }
 
+/**
+ * Generates the simple Zhuyin keyboard that plays the pronounciation audio for the Home Page
+ */
 const homePageKeyboard = () => {
   const initialCharsKeys = Object.keys(zhuyinCharacterList[0]);
   const middleCharsKeys = Object.keys(zhuyinCharacterList[1]);
@@ -94,6 +108,10 @@ const homePageKeyboard = () => {
     </div>);
 }
 
+/**
+ * Given the current Zhuyin character to generate a key for on the keyboard, 
+ * find its pronounciation text and create a button that plays its audio file.
+ */
 const keyButtonGenerator = (key, index, arr) => {
   const audioPath = "audio/" + key + ".mp3";
   var pronounciation = "";
@@ -121,6 +139,10 @@ const keyButtonGenerator = (key, index, arr) => {
     </div>);
 }
 
+/**
+ * Creates a new Audio object for the given Zhuyin key and plays the audio file
+ * @param {String} key Zhuyin character to pronounce
+ */
 const playAudio = (key) => {
   const audioPath = "audio/" + key + ".mp3";
   var audio = new Audio(audioPath);
@@ -128,6 +150,9 @@ const playAudio = (key) => {
   audio.play();
 }
 
+/**
+ * Displays an error message. Used for when an invalid page has been selected.
+ */
 const unknownPage = () => {
   return (
     <div>

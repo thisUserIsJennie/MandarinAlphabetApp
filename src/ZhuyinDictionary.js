@@ -1,3 +1,7 @@
+/**
+ * ZhuyinDictionary.js contains all the Zhuyin characters and their written pronounciations.
+ */
+
 const initialCharacters = {
     'ㄅ': "Buh",
     'ㄆ': "Puh",

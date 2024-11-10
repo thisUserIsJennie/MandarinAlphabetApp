@@ -1,3 +1,10 @@
+/**
+ * TextToSpeech.js handles sending requests to Google Cloud Text-To-Speech API 
+ * to generate audio files for Zhuyin.
+ * 
+ * TODO: eventually this should be able to handle requests for Han characters, 
+ * not just individual Zhuyin characters.
+ */
 const textToSpeech = require('@google-cloud/text-to-speech');
 const fs = require('fs');
 const util = require('util');
