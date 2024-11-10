@@ -6,6 +6,8 @@
 import zhuyinCharacterList from "./ZhuyinDictionary";
 import './App.css';
 import React from "react";
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 const MainPage = (selectedContent) => {
   var displayContent;
@@ -29,21 +31,12 @@ const homePage = () => {
     <div>
       <div>
         {homePageIntro()}
-        <div id="homePagekeyboard">
-          <h1>Initial Characters</h1>
-          {zhuyinCharacterList[0].map(keyButtonGenerator, this)}
-          <h1>Middle Characters</h1>
-          {zhuyinCharacterList[1].map(keyButtonGenerator, this)}
-          <h1>Final Characters</h1>
-          {zhuyinCharacterList[2].map(keyButtonGenerator, this)}
-        </div>
+        {homePageKeyboard()}
       </div>
     </div>
   )
 }
 
-
-//https://en.wikipedia.org/wiki/Pinyin
 const homePageIntro = () => {
   return (
     <div id="zhuyinIntro">
@@ -56,8 +49,9 @@ const homePageIntro = () => {
           <p>Zhu-Yin-Fu-Hao 注音符號, also known as Bopomofo ㄅㄆㄇㄈ,
             is a set of characters designed to help you learn to pronounce Mandarin words.
             Think of it like the English ABC's, except for pronounciation only.</p>
-          <p>Zhuyin can be an alternative tool for Pinyin, and in fact, is taught to children
-            in Taiwanese schools when they are first learning to read and write Chinese characters.</p>
+          <p>Zhuyin can be an alternative tool for <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">Pinyin</a>,
+            and in fact, is taught to children in Taiwanese schools when they are first
+            learning to read and write Chinese characters.</p>
           <p>See the image to the right for examples of Chinese characters accompanied by both Zhuyin and Pinyin.</p>
         </div>
 
@@ -66,10 +60,65 @@ const homePageIntro = () => {
     </div>);
 }
 
-const keyButtonGenerator = (key) => {
-  const audioPath = "audio/" + key + ".mp3";
+const homePageKeyboard = () => {
+  const initialCharsKeys = Object.keys(zhuyinCharacterList[0]);
+  const middleCharsKeys = Object.keys(zhuyinCharacterList[1]);
+  const finalCharsKeys = Object.keys(zhuyinCharacterList[2]);
   return (
-    <button onClick={() => playAudio(key)}>{key}</button>);
+    <div id="homePagekeyboard">
+      <h1>
+        Initial Characters
+        <Tippy content="Initial characters will always be found at the beginning of a 
+          word when they are being used. They do not come after middle or final characters.
+          Some words do not use initial characters at all, and either begin with a middle character 
+          or are a singular final character." placement="right-end" animation="perspective-subtle">
+          <span>&#x1F6C8;</span>
+        </Tippy>
+      </h1>
+      {initialCharsKeys.map(keyButtonGenerator, this)}
+      <h1>Middle Characters
+        <Tippy content="Middle characters will either be the first character in a word if no initial character 
+          is being used, or come after an initial character. They may be sandwiched between an initial
+          character and final character." placement="right-end" animation="perspective-subtle">
+          <span>&#x1F6C8;</span>
+        </Tippy>
+      </h1>
+      {middleCharsKeys.map(keyButtonGenerator, this)}
+      <h1>Final Characters
+        <Tippy content="Final characters will always come after initial and/or middle characters,
+          unless they are used singularly." placement="right-end" animation="perspective-subtle">
+          <span>&#x1F6C8;</span>
+        </Tippy>
+      </h1>
+      {finalCharsKeys.map(keyButtonGenerator, this)}
+    </div>);
+}
+
+const keyButtonGenerator = (key, index, arr) => {
+  const audioPath = "audio/" + key + ".mp3";
+  var pronounciation = "";
+
+  //Figure out whether the current key is an initial, middle, 
+  //or final to get the pronounciation
+  switch (arr[0]) {
+    case 'ㄅ':
+      pronounciation = (zhuyinCharacterList[0])[key];
+      break;
+    case '一':
+      pronounciation = (zhuyinCharacterList[1])[key];
+      break;
+    case 'ㄚ':
+      pronounciation = (zhuyinCharacterList[2])[key];
+      break;
+    default:
+      break;
+  }
+
+  return (
+    <div class="simpleKey">
+      <button onClick={() => playAudio(key)}>{key}</button>
+      <label>{pronounciation}</label>
+    </div>);
 }
 
 const playAudio = (key) => {
@@ -89,6 +138,5 @@ const unknownPage = () => {
     </div>
   )
 }
-
 
 export default MainPage;

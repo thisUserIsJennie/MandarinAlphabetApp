@@ -74,3 +74,10 @@
   font-family:'Times New Roman', Times, serif;
   padding-top: 5vh;
 }
+
+.simpleKey {
+  display: inline-table;
+  text-align: center;
+  height: min-content;
+  width: min-content;
+}
