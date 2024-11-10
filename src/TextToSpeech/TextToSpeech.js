@@ -42,7 +42,7 @@ function generateAudioForAllZhuyin() {
     'ㄚ', 'ㄛ', 'ㄜ', 'ㄝ', 'ㄞ', 'ㄟ', 'ㄠ', 'ㄡ', 'ㄢ', 'ㄣ', 'ㄤ', 'ㄥ', 'ㄦ'
   ];
 
-  for (key in Zhuyin) {
+  for (key of Zhuyin) {
     convertCharToSpeech(key);
   }
 }

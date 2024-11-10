@@ -1,22 +1,20 @@
 /**
- * MainPage manages the content of everything except the Sidebar.
+ * MainPage manages the content of everything except the Navigation Bar at the top of the app.
  * Depending on what tab the user has selected, this may be the home page, 
  * the quiz page, or the writing page, etc.
  */
-
-import { Button } from "react-bootstrap";
-import Zhuyin from "./ZhuyinDictionary";
+import zhuyinCharacterList from "./ZhuyinDictionary";
 
 const MainPage = (selectedContent) => {
   var displayContent;
 
   switch (selectedContent) {
     case "HomePage":
-      displayContent = HomePage();
+      displayContent = homePage();
       console.log("Selected Home Page");
       break;
     default:
-      displayContent = UnknownPage();
+      displayContent = unknownPage();
       console.log("ERROR: UNKNOWN PAGE");
       break;
   }
@@ -24,12 +22,7 @@ const MainPage = (selectedContent) => {
   return displayContent;
 }
 
-const HomePage = () => {
-  // const keyboard = AlphabetKeyboard();
-  var buttonList = [];
-  for (const char in Zhuyin) {
-    buttonList += Zhuyin[char];
-  }
+const homePage = () => {
   return (
     <div>
       <div>
@@ -43,25 +36,33 @@ const HomePage = () => {
             Think of it like the English ABC's, except for pronounciation only.</p>
         </div>
         <div>
-          <button>
-            {buttonList[0]}
-          </button>
-          </div>
+          <header>
+            <p>Initial Characters</p>
+          </header>
+          {zhuyinCharacterList[0].map(keyButtonGenerator, this)}
+        </div>
+        <div>
+          <header>
+            <p>Middle Characters</p>
+          </header>
+          {zhuyinCharacterList[1].map(keyButtonGenerator, this)}
+        </div>
+        <div>
+          <header>
+            <p>Final Characters</p>
+          </header>
+          {zhuyinCharacterList[2].map(keyButtonGenerator, this)}
+        </div>
       </div>
     </div>
   )
 }
 
-// const AlphabetKeyboard = () => {
-//   var buttonList = [];
-//   for (const char in Zhuyin) {
-//     buttonList += Zhuyin[char];
-//   }
+const keyButtonGenerator = (key) => {
+  return (<button>{key}</button>);
+}
 
-//   return (buttonList.map((char) => <button>{char}</button>));
-// }
-
-const UnknownPage = () => {
+const unknownPage = () => {
   return (
     <div>
       <header>
