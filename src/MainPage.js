@@ -4,6 +4,7 @@
  * the quiz page, or the writing page, etc.
  */
 import zhuyinCharacterList from "./ZhuyinDictionary";
+import './App.css';
 
 const MainPage = (selectedContent) => {
   var displayContent;
@@ -35,22 +36,12 @@ const homePage = () => {
             is a set of characters designed to help you learn to pronounce Mandarin words.
             Think of it like the English ABC's, except for pronounciation only.</p>
         </div>
-        <div>
-          <header>
-            <p>Initial Characters</p>
-          </header>
+        <div id="keyboard">
+          <h1>Initial Characters</h1>
           {zhuyinCharacterList[0].map(keyButtonGenerator, this)}
-        </div>
-        <div>
-          <header>
-            <p>Middle Characters</p>
-          </header>
+          <h1>Middle Characters</h1>
           {zhuyinCharacterList[1].map(keyButtonGenerator, this)}
-        </div>
-        <div>
-          <header>
-            <p>Final Characters</p>
-          </header>
+          <h1>Final Characters</h1>
           {zhuyinCharacterList[2].map(keyButtonGenerator, this)}
         </div>
       </div>

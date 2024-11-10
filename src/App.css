@@ -31,3 +31,24 @@
     transform: rotate(360deg);
   }
 }
+
+#keyboard {
+  padding: 0 25vw 3vw 25vw;
+  background-color: #cfd8e8;
+}
+
+#keyboard button {
+  height: 6vmin;
+  width: 6vmin;
+  margin-right: 4px;
+  margin-top: 4px;
+  text-align: center;
+}
+
+#keyboard h1 {
+  font-size: 3vmin;
+  text-align: center;
+  box-shadow: #61dafb;
+  font-family:'Times New Roman', Times, serif;
+  padding-top: 5vh;
+}
