@@ -5,6 +5,7 @@
  */
 import zhuyinCharacterList from "./ZhuyinDictionary";
 import './App.css';
+import React from "react";
 
 const MainPage = (selectedContent) => {
   var displayContent;
@@ -50,7 +51,16 @@ const homePage = () => {
 }
 
 const keyButtonGenerator = (key) => {
-  return (<button>{key}</button>);
+  const audioPath = "audio/" + key + ".mp3";
+  return (
+  <button onClick={() => playAudio(key)}>{key}</button>);
+}
+
+const playAudio = (key) => {
+  const audioPath = "audio/" + key + ".mp3";
+  var audio = new Audio(audioPath);
+  audio.autoplay = false;
+  audio.play();
 }
 
 const unknownPage = () => {
