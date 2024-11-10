@@ -28,16 +28,8 @@ const homePage = () => {
   return (
     <div>
       <div>
-        <div>
-          <header>
-            <h1>About Zhuyin</h1>
-            <p>The "alphabet" for learning Mandarin</p>
-          </header>
-          <p>Zhuyin 注音, also known as Bopomofo ㄅㄆㄇㄈ,
-            is a set of characters designed to help you learn to pronounce Mandarin words.
-            Think of it like the English ABC's, except for pronounciation only.</p>
-        </div>
-        <div id="keyboard">
+        {homePageIntro()}
+        <div id="homePagekeyboard">
           <h1>Initial Characters</h1>
           {zhuyinCharacterList[0].map(keyButtonGenerator, this)}
           <h1>Middle Characters</h1>
@@ -50,10 +42,34 @@ const homePage = () => {
   )
 }
 
+
+//https://en.wikipedia.org/wiki/Pinyin
+const homePageIntro = () => {
+  return (
+    <div id="zhuyinIntro">
+      <header>
+        <h1>About Zhuyin</h1>
+        <h5>The "alphabet" for learning Mandarin</h5>
+      </header>
+      <div class="grid-container">
+        <div class="grid-child">
+          <p>Zhu-Yin-Fu-Hao 注音符號, also known as Bopomofo ㄅㄆㄇㄈ,
+            is a set of characters designed to help you learn to pronounce Mandarin words.
+            Think of it like the English ABC's, except for pronounciation only.</p>
+          <p>Zhuyin can be an alternative tool for Pinyin, and in fact, is taught to children
+            in Taiwanese schools when they are first learning to read and write Chinese characters.</p>
+          <p>See the image to the right for examples of Chinese characters accompanied by both Zhuyin and Pinyin.</p>
+        </div>
+
+        <img class="grid-child" src="zhuyinVsPinyinExample.jpg"></img>
+      </div>
+    </div>);
+}
+
 const keyButtonGenerator = (key) => {
   const audioPath = "audio/" + key + ".mp3";
   return (
-  <button onClick={() => playAudio(key)}>{key}</button>);
+    <button onClick={() => playAudio(key)}>{key}</button>);
 }
 
 const playAudio = (key) => {

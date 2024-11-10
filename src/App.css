@@ -32,12 +32,34 @@
   }
 }
 
-#keyboard {
+#zhuyinIntro {
+  padding: 3vw 10vw 3vw 10vw;
+  background-color: #fffbf5;
+}
+
+#zhuyinIntro header {
+  text-align: center;
+}
+
+#zhuyinIntro .grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+  padding-top: 3vh;
+  text-align: justify;
+}
+
+#zhuyinIntro .grid-container img {
+  height: 20em;
+  width: auto;
+}
+
+#homePagekeyboard {
   padding: 0 25vw 3vw 25vw;
   background-color: #cfd8e8;
 }
 
-#keyboard button {
+#homePagekeyboard button {
   height: 6vmin;
   width: 6vmin;
   margin-right: 4px;
@@ -45,7 +67,7 @@
   text-align: center;
 }
 
-#keyboard h1 {
+#homePagekeyboard h1 {
   font-size: 3vmin;
   text-align: center;
   box-shadow: #61dafb;
