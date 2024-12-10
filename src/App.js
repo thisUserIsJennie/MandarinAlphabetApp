@@ -1,5 +1,5 @@
 import logo from './customLogo.jpg';
-import MainPage from './WebPages/MainPage';
+import MainPage from './Components/MainPage';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
