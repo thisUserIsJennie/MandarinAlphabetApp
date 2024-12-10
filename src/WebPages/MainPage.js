@@ -3,8 +3,8 @@
  * Depending on what tab the user has selected, this may be the home page, 
  * the quiz page, or the writing page, etc.
  */
-import zhuyinCharacterList from "./ZhuyinDictionary";
-import './App.css';
+import zhuyinCharacterList from "../Utilities/ZhuyinDictionary";
+import '../App.css';
 import React from "react";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';

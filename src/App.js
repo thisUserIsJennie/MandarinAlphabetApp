@@ -1,9 +1,10 @@
 import logo from './customLogo.jpg';
-import MainPage from './MainPage';
+import MainPage from './WebPages/MainPage';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import {Link} from "react";
 
 /* CSS */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -41,13 +42,13 @@ const NavigationBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/InteractiveKeyboard">Interactive Keyboard</Nav.Link>
             <NavDropdown title="Coming Soon" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Quiz</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Learn To Write Zhuyin
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Interactive Keyboard</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
